@@ -6,7 +6,7 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 19:53:10 by laleta            #+#    #+#             */
-/*   Updated: 2020/02/04 05:39:14 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/14 23:25:53 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void			translate_to_bytecode(t_asm *assm)
 	ft_strcpy(str, assm->path_file_name);
 	ft_strcat(str, "cor");
 	if ((assm->fd_out = open(str, O_WRONLY | O_CREAT | O_TRUNC, 0666)) == -1)
-		error_handle(assm->file_name, strerror(errno), assm);
+		error_handle2(str, strerror(errno), assm);
 	free(str);
 	write_bytecode(assm, assm->header, assm->oper_queue, assm->labels);
 }

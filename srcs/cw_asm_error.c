@@ -6,7 +6,7 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 20:25:40 by laleta            #+#    #+#             */
-/*   Updated: 2020/02/03 21:46:10 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/14 23:24:13 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,18 @@ void	error_handle(const char *name, const char *err_str, t_asm *assm)
 	ft_printf(B_RED);
 	ft_printf(F_WHITE);
 	ft_printf(BOLD " %ss " NONE F_RED "\tERROR: %s\n" NONE, name, err_str);
+	if (errno)
+		ft_printf(F_RED "%s\n" NONE, strerror(errno));
+	if (assm)
+		asm_free(assm);
+	exit(1);
+}
+
+void	error_handle2(const char *name, const char *err_str, t_asm *assm)
+{
+	ft_printf(B_RED);
+	ft_printf(F_WHITE);
+	ft_printf(BOLD " %s " NONE F_RED "\tERROR: %s\n" NONE, name, err_str);
 	if (errno)
 		ft_printf(F_RED "%s\n" NONE, strerror(errno));
 	if (assm)

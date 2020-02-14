@@ -6,7 +6,7 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 04:17:43 by laleta            #+#    #+#             */
-/*   Updated: 2020/02/04 05:27:08 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/14 23:26:53 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ int8_t					operqueue_is_empty(t_oper_queue *queue);
 void					operqueue_free(t_oper_queue *queue);
 void					translate_to_bytecode(t_asm *assm);
 void					error_handle(const char *name, const char *err_str,
+																t_asm *assm);
+void					error_handle2(const char *name, const char *err_str,
 																t_asm *assm);
 void					error_handle_adv(t_asm *assm, t_inline *iline,
 									const char *err_str, const char *token_str);

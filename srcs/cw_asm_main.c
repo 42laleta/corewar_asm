@@ -6,7 +6,7 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 04:43:03 by laleta            #+#    #+#             */
-/*   Updated: 2020/02/04 05:39:12 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/14 23:25:16 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static int32_t	valid_file(const char *file_name)
 	int32_t	len;
 
 	if ((len = ft_strlen(file_name)) > MAX_FILE_PATH - 3)
-		error_handle(file_name, ERR_FILE_NAME, NULL);
+		error_handle2(file_name, ERR_FILE_NAME, NULL);
 	if ((file_type = ft_strrchr(file_name, '.')) && ft_strequ(file_type, ".s"))
 		return (fd = open(file_name, O_RDONLY));
 	else
-		error_handle(file_name, ERR_FILE_TYPE, NULL);
+		error_handle2(file_name, ERR_FILE_TYPE, NULL);
 	return (-1);
 }
 

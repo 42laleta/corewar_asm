@@ -6,7 +6,7 @@
 #    By: laleta <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/07 19:28:58 by laleta            #+#    #+#              #
-#    Updated: 2020/02/03 21:55:08 by laleta           ###   ########.fr        #
+#    Updated: 2020/02/14 20:50:51 by laleta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,15 @@ OBJECT = $(SOURCE:.c=.o)
 
 all : $(NAME)
 
-$(NAME) : $(OBJECT)
+$(NAME) : $(LIBFT) $(OBJECT)
 	@echo "\033[1;3;34m"
 	gcc $(FLAGS) $(OBJECT) -o $@ $(INCLUDES) $(LIB_DIR) $(LIB)
 	@echo "\033[23;32m--[ "$(NAME) ]-- successfully compiled"\033[0m"
+
+$(LIBFT) :
+	@echo "\033[33;3m"
+	@make -C $(LIBFT_DIR)
+	@echo "\033[0m"
 
 %.o : %.c $(HEADER)
 	@echo "\033[36;3m"
@@ -46,9 +51,11 @@ $(NAME) : $(OBJECT)
 	@echo "\033[0m"
 
 clean :
+	@make -C $(LIBFT_DIR) clean
 	@rm -f $(OBJECT)
 
 fclean : clean
+	@make -C $(LIBFT_DIR) fclean
 	@rm -f $(NAME)
 
 re : fclean all
