@@ -92,6 +92,6 @@ void		file_handle(t_asm *assm)
 		labelist_push_back(assm, &assm->labels, &label_str,
 												assm->oper_queue->byte_total);
 	if (assm->oper_queue->byte_total == 0)
-		error_handle(assm->file_name, ERR_NO_OPERATION, assm);
+		error_handle(assm->file_name, ERR_NO_OPERATION, assm, NULL);
 	assm->header->prog_size = assm->oper_queue->byte_total;
 }

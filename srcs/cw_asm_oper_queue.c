@@ -31,7 +31,7 @@ void			operqueue_push(t_asm *assm, t_oper_queue *queue,
 															t_node_queue *node)
 {
 	if (!node)
-		error_handle(assm->file_name, ERR_MALLOC, assm);
+		error_handle(assm->file_name, ERR_MALLOC, assm, NULL);
 	if (!queue->first)
 		queue->first = node;
 	else

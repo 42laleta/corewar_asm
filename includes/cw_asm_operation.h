@@ -37,4 +37,12 @@ static t_operation g_oper_tab[] =
 	{"", 0, {0}, 0, 0}
 };
 
+static t_argument	g_arg_type[] = 
+{
+	{0, 0, ""},
+	{T_REG, REGNBR_SIZE, REGISTER_STR},
+	{T_DIR, DIR_SIZE, DIRECT_STR},
+	{T_IND, IND_SIZE, ""}
+};
+
 #endif

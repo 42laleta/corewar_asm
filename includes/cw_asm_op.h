@@ -15,16 +15,16 @@
 
 # define IND_SIZE			2
 # define REG_SIZE			4
-# define DIR_SIZE			REG_SIZE
+# define DIR_SIZE			4
 # define REGNBR_SIZE		1
 # define REG_CODE			1
 # define DIR_CODE			2
 # define IND_CODE			3
 # define MAX_ARGS_NUMBER	4
 # define MAX_PLAYERS		4
-# define MEM_SIZE			(4*1024)
-# define IDX_MOD			(MEM_SIZE / 8)
-# define CHAMP_MAX_SIZE		(MEM_SIZE / 6)
+# define MEM_SIZE			(4 * 1024)
+# define IDX_MOD			(4 * 1024 / 8)
+# define CHAMP_MAX_SIZE		(4 * 1024 / 6)
 # define COMMENT_CHAR		'#'
 # define COMMENT_CHAR_ALT	';'
 # define LABEL_CHAR			':'
@@ -46,6 +46,9 @@
 # define PROG_NAME_LENGTH	(128)
 # define COMMENT_LENGTH		(2048)
 # define COREWAR_EXEC_MAGIC	0xea83f3
+# define HEADER_SIZE 		(16 + 128 + 2048)
+# define REGISTER_STR		"r"
+# define DIRECT_STR			"%"
 
 typedef char		t_arg_type;
 

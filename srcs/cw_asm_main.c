@@ -12,6 +12,8 @@
 
 #include "cw_asm.h"
 
+uint8_t	g_disasm = 0;
+
 static int32_t	valid_file(const char *file_name)
 {
 	int32_t	fd;
@@ -19,12 +21,31 @@ static int32_t	valid_file(const char *file_name)
 	int32_t	len;
 
 	if ((len = ft_strlen(file_name)) > MAX_FILE_PATH - 3)
-		error_handle2(file_name, ERR_FILE_NAME, NULL);
-	if ((file_type = ft_strrchr(file_name, '.')) && ft_strequ(file_type, ".s"))
+		error_handle2(file_name, ERR_FILE_NAME, NULL, NULL);
+	if ((file_type = ft_strrchr(file_name, '.')) &&
+			((!g_disasm && ft_strequ(file_type, ".s")) ||
+			(g_disasm && ft_strequ(file_type, ".cor"))))
 		return (fd = open(file_name, O_RDONLY));
 	else
-		error_handle2(file_name, ERR_FILE_TYPE, NULL);
+		error_handle2(file_name, ERR_FILE_TYPE, NULL, NULL);
 	return (-1);
+}
+
+void			disassembler(int32_t fd, char *file_name)
+{
+	t_disasm	*disassm;
+
+	disassm = NULL;
+	disasm_init(&disassm, file_name);
+	disasm_file_handle(disassm, fd);
+	close(fd);
+	ft_printf(B_GREEN);
+	ft_printf(F_WHITE);
+	ft_printf(BOLD " %scor " NONE, disassm->file_name);
+	ft_printf(F_GREEN "\tWraiting output code to %ss\n\n" NONE,
+													disassm->path_file_name);
+	translate_to_source(disassm);
+	disasm_free(disassm);
 }
 
 void			assembler(int32_t fd, char *file_name)
@@ -46,7 +67,8 @@ void			assembler(int32_t fd, char *file_name)
 
 static int32_t	usage(void)
 {
-	ft_printf("usage: ./asm file.s\n");
+	ft_printf("usage:\n\tassembler:	./asm -a file.s\n"
+									"\tdisassembler:	./asm -d file.cor\n");
 	return (1);
 }
 
@@ -55,13 +77,14 @@ int32_t			main(int32_t argc, char **argv)
 	int32_t	i;
 	int32_t	fd;
 
-	i = 0;
-	if (argc < 2)
+	i = 1;
+	if (argc < 3 || (!(g_disasm = ft_strequ("-d", argv[1])) &&
+													!ft_strequ("-a", argv[1])))
 		return (usage());
 	while (++i < argc)
 	{
 		if ((fd = valid_file(argv[i])) != -1)
-			assembler(fd, argv[i]);
+			!g_disasm ? assembler(fd, argv[i]) : disassembler(fd, argv[i]);
 		else
 		{
 			if (errno)
@@ -69,7 +92,7 @@ int32_t			main(int32_t argc, char **argv)
 				ft_printf(B_RED);
 				ft_printf(F_WHITE);
 				ft_printf(BOLD " %s " NONE, argv[i]);
-				ft_printf(F_RED "\tERROR: %s\n" NONE, strerror(errno));
+				ft_printf(F_RED "\tERROR: %s\n\n" NONE, strerror(errno));
 			}
 			continue ;
 		}

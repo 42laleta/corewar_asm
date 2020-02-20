@@ -4,6 +4,7 @@
 make
 
 
-./asm champs/file.s [champs/file.s ...]
+./asm -a file.s [file.s ...]
 
 
+./asm -d file.cor [file.cor ...]

@@ -12,27 +12,41 @@
 
 #include "cw_asm.h"
 
-void	error_handle(const char *name, const char *err_str, t_asm *assm)
+void	error_handle(const char *name, const char *err_str, t_asm *assm,
+															t_disasm *disassm)
 {
+	const char	str_asm[] = "s";
+	const char	str_disasm[] = "cor";
+	char		*s;
+
+	if (!g_disasm)
+		s = (char *)str_asm;
+	else
+		s = (char *)str_disasm;
 	ft_printf(B_RED);
 	ft_printf(F_WHITE);
-	ft_printf(BOLD " %ss " NONE F_RED "\tERROR: %s\n" NONE, name, err_str);
+	ft_printf(BOLD " %s%s " NONE F_RED "\tERROR: %s\n" NONE, name, s, err_str);
 	if (errno)
 		ft_printf(F_RED "%s\n" NONE, strerror(errno));
-	if (assm)
+	if (!g_disasm && assm)
 		asm_free(assm);
+	if (g_disasm && disassm)
+		disasm_free(disassm);
 	exit(1);
 }
 
-void	error_handle2(const char *name, const char *err_str, t_asm *assm)
+void	error_handle2(const char *name, const char *err_str, t_asm *assm,
+															t_disasm *disassm)
 {
 	ft_printf(B_RED);
 	ft_printf(F_WHITE);
 	ft_printf(BOLD " %s " NONE F_RED "\tERROR: %s\n" NONE, name, err_str);
 	if (errno)
 		ft_printf(F_RED "%s\n" NONE, strerror(errno));
-	if (assm)
+	if (!g_disasm && assm)
 		asm_free(assm);
+	if (g_disasm && disassm)
+		disasm_free(disassm);
 	exit(1);
 }
 

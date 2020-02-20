@@ -20,7 +20,7 @@ static void	set_filename(t_asm *assm, char *file_name)
 	name = NULL;
 	len = ft_strlen(file_name);
 	if (!(assm->path_file_name = ft_strnew(len - 1)))
-		error_handle(file_name, ERR_MALLOC, assm);
+		error_handle(file_name, ERR_MALLOC, assm, NULL);
 	ft_strncpy(assm->path_file_name, file_name, len - 1);
 	name = ft_strrchr(assm->path_file_name, '/');
 	if (name)
@@ -33,7 +33,7 @@ static void	set_filename(t_asm *assm, char *file_name)
 void		asm_init(t_asm **assm, char *file_name, int32_t fd)
 {
 	if (!((*assm) = (t_asm *)malloc(sizeof(t_asm))))
-		error_handle(file_name, ERR_MALLOC, NULL);
+		error_handle(file_name, ERR_MALLOC, NULL, NULL);
 	(*assm)->header = NULL;
 	(*assm)->oper_queue = NULL;
 	(*assm)->path_file_name = NULL;
@@ -41,7 +41,7 @@ void		asm_init(t_asm **assm, char *file_name, int32_t fd)
 	(*assm)->labels = NULL;
 	if (!((*assm)->header = (t_header *)ft_memalloc(sizeof(t_header))) ||
 		!((*assm)->oper_queue = (t_oper_queue *)malloc(sizeof(t_oper_queue))))
-		error_handle(file_name, ERR_MALLOC, *assm);
+		error_handle(file_name, ERR_MALLOC, *assm, NULL);
 	ft_memset((*assm)->header, 0, sizeof((*assm)->header));
 	(*assm)->header->magic = COREWAR_EXEC_MAGIC;
 	(*assm)->oper_queue->first = NULL;

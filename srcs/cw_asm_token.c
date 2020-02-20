@@ -83,7 +83,7 @@ t_token			*get_token(t_asm *assm, t_inline *iline)
 	t_token *token;
 
 	if (!(token = (t_token *)malloc(sizeof(t_token))))
-		error_handle(assm->file_name, ERR_MALLOC, assm);
+		error_handle(assm->file_name, ERR_MALLOC, assm, NULL);
 	token->raw = NULL;
 	token->raw = get_token_raw(iline);
 	get_token_type(assm, token, iline);

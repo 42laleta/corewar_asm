@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "cw_asm_op.h"
 # include "cw_asm_error.h"
+# include "cw_disasm.h"
 # include <fcntl.h>
 # include <errno.h>
 
@@ -30,6 +31,8 @@
 # define COMMENT_HEAD		2
 # define OPER_SIZE			1
 # define ARGCODE_SIZE		1
+
+extern uint8_t			g_disasm;
 
 typedef	struct			s_token
 {
@@ -122,9 +125,9 @@ int8_t					operqueue_is_empty(t_oper_queue *queue);
 void					operqueue_free(t_oper_queue *queue);
 void					translate_to_bytecode(t_asm *assm);
 void					error_handle(const char *name, const char *err_str,
-																t_asm *assm);
+											t_asm *assm, t_disasm *disassm);
 void					error_handle2(const char *name, const char *err_str,
-																t_asm *assm);
+											t_asm *assm, t_disasm *disassm);
 void					error_handle_adv(t_asm *assm, t_inline *iline,
 									const char *err_str, const char *token_str);
 

@@ -34,7 +34,7 @@ t_label		*labelist_create_node(t_asm *assm, char **label_str,
 	t_label		*new_node;
 
 	if (!(new_node = (t_label *)ft_memalloc(sizeof(t_label))))
-		error_handle(assm->file_name, ERR_MALLOC, assm);
+		error_handle(assm->file_name, ERR_MALLOC, assm, NULL);
 	new_node->raw = ft_strdup(*label_str);
 	new_node->hash = get_hash(*label_str);
 	ft_strdel(label_str);
@@ -67,7 +67,7 @@ uint16_t	labelist_search(t_asm *assm, t_label *labelist, const char *str)
 	char		str_err[32];
 
 	if (!labelist)
-		error_handle(assm->file_name, "undefined label list\n", assm);
+		error_handle(assm->file_name, "undefined label list\n", assm, NULL);
 	hash = get_hash(str);
 	while (labelist)
 	{
@@ -76,7 +76,7 @@ uint16_t	labelist_search(t_asm *assm, t_label *labelist, const char *str)
 		labelist = labelist->next;
 	}
 	ft_sprintf(str_err, "undefined label %s\n", str);
-	error_handle(assm->file_name, str_err, assm);
+	error_handle(assm->file_name, str_err, assm, NULL);
 	return (0);
 }
 
