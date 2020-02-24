@@ -6,7 +6,7 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 04:17:43 by laleta            #+#    #+#             */
-/*   Updated: 2020/02/20 21:26:56 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/24 13:01:53 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@
 # include "cw_disasm.h"
 # include <fcntl.h>
 # include <errno.h>
+# include <stdio.h>
 
-//----------------------------------------------
-#include <stdio.h>
-//-----------------------------------------------
-//
 # define MAX_FILE_PATH		128
 # define ASM_UNDEF			0
 # define ASM_LABEL			1

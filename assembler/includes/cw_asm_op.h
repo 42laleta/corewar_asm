@@ -6,7 +6,7 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 05:38:43 by laleta            #+#    #+#             */
-/*   Updated: 2020/02/20 23:32:49 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/24 13:17:29 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # define IND_CODE			3
 # define MAX_ARGS_NUMBER	4
 # define MAX_PLAYERS		4
-# define MEM_SIZE			(4 * 1024)
-# define IDX_MOD			(4 * 1024 / 8)
-# define CHAMP_MAX_SIZE		(4 * 1024 / 6)
+# define MEM_SIZE			4096
+# define IDX_MOD			512
+# define CHAMP_MAX_SIZE		682
 # define COMMENT_CHAR		'#'
 # define COMMENT_CHAR_ALT	';'
 # define LABEL_CHAR			':'
@@ -43,10 +43,10 @@
 # define T_DIR				2
 # define T_IND				4
 # define T_LAB				8
-# define PROG_NAME_LENGTH	(128)
-# define COMMENT_LENGTH		(2048)
+# define PROG_NAME_LENGTH	128
+# define COMMENT_LENGTH		2048
 # define COREWAR_EXEC_MAGIC	0xea83f3
-# define HEADER_SIZE 		(16 + 128 + 2048)
+# define HEADER_SIZE 		2192
 # define REGISTER_STR		"r"
 # define DIRECT_STR			"%"
 # define COMMENT_CMD_CHAR	'\"'

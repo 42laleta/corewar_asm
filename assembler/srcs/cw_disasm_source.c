@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cw_disasm_source.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/24 12:56:49 by laleta            #+#    #+#             */
+/*   Updated: 2020/02/24 12:59:43 by laleta           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cw_disasm.h"
 #include "cw_asm_operation.h"
 
-uint8_t		write_operation(uint8_t oper, t_disasm *disassm)
+static uint8_t	write_operation(uint8_t oper, t_disasm *disassm)
 {
 	if (oper > 0 && oper < 17)
 	{
@@ -13,7 +25,7 @@ uint8_t		write_operation(uint8_t oper, t_disasm *disassm)
 	return (0);
 }
 
-uint8_t		valid_arg_type(uint8_t *program, uint64_t idx)
+static uint8_t	valid_arg_type(uint8_t *program, uint64_t idx)
 {
 	uint8_t	i;
 	uint8_t	oper;
@@ -34,7 +46,8 @@ uint8_t		valid_arg_type(uint8_t *program, uint64_t idx)
 	return (1);
 }
 
-uint8_t		write_argument(uint8_t arg_type, uint8_t oper, t_disasm *disassm)
+static uint8_t	write_argument(uint8_t arg_type, uint8_t oper,
+															t_disasm *disassm)
 {
 	int32_t	nbr;
 	uint8_t	half_dir_size;
@@ -61,7 +74,7 @@ uint8_t		write_argument(uint8_t arg_type, uint8_t oper, t_disasm *disassm)
 	return (size);
 }
 
-void	write_program(t_disasm *disassm)
+static void		write_program(t_disasm *disassm)
 {
 	uint8_t	oper;
 	uint8_t	arg_code;
@@ -85,7 +98,7 @@ void	write_program(t_disasm *disassm)
 	write(disassm->fd_out, "\n", 1);
 }
 
-void	translate_to_source(t_disasm *disassm)
+void			translate_to_source(t_disasm *disassm)
 {
 	disassm->header.prog_name[PROG_NAME_LENGTH] = '\0';
 	disassm->header.comment[COMMENT_LENGTH] = '\0';

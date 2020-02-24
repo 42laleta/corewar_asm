@@ -6,7 +6,7 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 20:27:30 by laleta            #+#    #+#             */
-/*   Updated: 2020/02/17 22:59:06 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:56:23 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	disasm_file_handle(t_disasm *disassm, int32_t fd)
 
 	if ((ret = read(fd, buf, CHAMP_MAX_SIZE + HEADER_SIZE + 1)) <= 0)
 		error_handle(disassm->file_name, ERR_READFILE, NULL, disassm);
-//	if (ret - HEADER_SIZE > CHAMP_MAX_SIZE)
-//		error_handle(disassm->file_name, ERR_CHAMP_MAXSIZE, NULL, disassm);
 	if (ret <= HEADER_SIZE)
 		error_handle(disassm->file_name, ERR_CHAMP_MINSIZE, NULL, disassm);
 	copy_champion(buf, disassm, ret);

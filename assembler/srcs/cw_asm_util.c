@@ -6,13 +6,13 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 20:11:18 by laleta            #+#    #+#             */
-/*   Updated: 2020/02/03 20:11:20 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/24 12:54:51 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cw_asm.h"
 
-int8_t	is_insignificant(int32_t c)
+int8_t		is_insignificant(int32_t c)
 {
 	return (c == ' ' || c == '\t' || c == '\v' || c == SEPARATOR_CHAR);
 }

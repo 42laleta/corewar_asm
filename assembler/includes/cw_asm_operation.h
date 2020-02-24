@@ -6,7 +6,7 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 19:58:58 by laleta            #+#    #+#             */
-/*   Updated: 2020/02/03 19:50:47 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/24 13:00:58 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static t_operation g_oper_tab[] =
 	{"", 0, {0}, 0, 0}
 };
 
-static t_argument	g_arg_type[] = 
+static t_argument	g_arg_type[] =
 {
 	{0, 0, ""},
 	{T_REG, REGNBR_SIZE, REGISTER_STR},
