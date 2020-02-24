@@ -6,7 +6,7 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 16:01:33 by laleta            #+#    #+#             */
-/*   Updated: 2019/09/04 21:14:38 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:04:01 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 # include <stdint.h>
 # include "ft_printf.h"
 # include "get_next_line.h"
-
-# define ABS(x) (((x) < 0) ? (x) * -1 : (x))
 
 typedef struct		s_ldiv_t
 {

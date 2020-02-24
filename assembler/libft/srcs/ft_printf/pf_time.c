@@ -6,11 +6,19 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/23 23:35:23 by laleta            #+#    #+#             */
-/*   Updated: 2019/06/24 02:17:43 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:43:28 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pf_time.h"
+
+static int32_t	ft_days(int32_t year, int32_t mon)
+{
+	if (year & 03 || year == 0)
+		return ((year - 1) / 4 + g_mos[mon]);
+	else
+		return ((year - 1) / 4 + g_lmos[mon]);
+}
 
 static void		ft_sectotim(t_tim *t, uint32_t sec)
 {
@@ -28,11 +36,11 @@ static void		ft_sectotim(t_tim *t, uint32_t sec)
 	t->min = sec / 60;
 	t->sec = sec % 60;
 	year = day / 365;
-	while (day < (i = DAYS(year, 0) + 365 * year))
+	while (day < (i = ft_days(year, 0) + 365 * year))
 		--year;
 	day -= i;
 	t->year = year + 1900;
-	pm = MON_TAB(year);
+	pm = (year & 03 || year == 0) ? g_mos : g_lmos;
 	mon = 12;
 	while (day < pm[--mon])
 		;
@@ -45,7 +53,7 @@ void			ft_ttoa(char **buf)
 	int64_t		time_sec;
 	t_tim		tim;
 
-	time_sec = TIM(NULL) + 10800;
+	time_sec = time(NULL) + 10800;
 	ft_sectotim(&tim, time_sec);
 	(*buf)[0] = tim.hour / 10 + '0';
 	(*buf)[1] = tim.hour % 10 + '0';

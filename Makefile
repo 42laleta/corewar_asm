@@ -6,20 +6,19 @@
 #    By: laleta <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/07 19:28:58 by laleta            #+#    #+#              #
-#    Updated: 2020/02/14 20:50:51 by laleta           ###   ########.fr        #
+#    Updated: 2020/02/24 18:18:32 by laleta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME1 = asm
 NAME2 = corewar
 
-EXE1_DIR = assembler
-EXE2_DIR = virtual_machine
+EXE1_DIR = asm
+EXE2_DIR = vm
 
 .PHONY : all clean fclean re
 
-all : $(NAME1)
-#$(NAME2)
+all : $(NAME1) $(NAME2)
 	@printf "$$(cat cw_make)"
 
 $(NAME1) :
@@ -29,11 +28,11 @@ $(NAME2) :
 
 clean :
 	@make -C $(EXE1_DIR) clean
-#	@make -C $(EXE2_DIR) clean
+	@make -C $(EXE2_DIR) clean
 
 fclean : clean
 	@make -C $(EXE1_DIR) fclean
-#	@make -C $(EXE2_DIR) fclean
+	@make -C $(EXE2_DIR) fclean
 
 re : fclean all
 

@@ -6,7 +6,7 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/24 05:52:51 by laleta            #+#    #+#             */
-/*   Updated: 2019/06/24 05:54:34 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/24 16:43:30 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # include <time.h>
 # include <stdint.h>
-
-# define MON_TAB(year)		((((year) & 03) || ((year) == 0)) ? g_mos : g_lmos)
-# define DAYS(year, mon)	(((year - 1) / 4) + MON_TAB(year)[mon])
-# define TIM(x) 			tim ## e(x)
 
 typedef	struct			s_tim
 {

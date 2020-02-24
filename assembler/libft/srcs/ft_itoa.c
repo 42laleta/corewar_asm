@@ -6,7 +6,7 @@
 /*   By: laleta <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/07 18:37:02 by laleta            #+#    #+#             */
-/*   Updated: 2019/04/10 21:23:08 by laleta           ###   ########.fr       */
+/*   Updated: 2020/02/24 15:59:57 by laleta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static short int	get_size(int n)
 
 	nbr = n;
 	size = 1;
-	while (ABS(nbr) > 9)
+	while ((nbr < 0 ? nbr * -1 : nbr) > 9)
 	{
 		nbr /= 10;
 		size++;
