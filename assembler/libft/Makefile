@@ -6,12 +6,12 @@
 #    By: laleta <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/07 19:28:58 by laleta            #+#    #+#              #
-#    Updated: 2019/08/03 16:16:54 by laleta           ###   ########.fr        #
+#    Updated: 2020/03/04 04:05:02 by laleta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 SOURCE = ft_atoi.c ft_atoi_base.c ft_itoa.c ft_convert_base.c\
 		ft_bzero.c ft_memalloc.c ft_memcmp.c ft_memcpy.c ft_memccpy.c\
 		ft_memchr.c ft_memdel.c ft_memmove.c ft_memset.c\

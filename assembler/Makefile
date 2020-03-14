@@ -6,12 +6,14 @@
 #    By: laleta <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/07 19:28:58 by laleta            #+#    #+#              #
-#    Updated: 2020/02/14 20:50:51 by laleta           ###   ########.fr        #
+#    Updated: 2020/03/04 04:04:46 by laleta           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+EXE_DIR = ../
 NAME = asm
-FLAGS = -g -Wall -Wextra -Werror
+NAME_EXE = $(EXE_DIR)$(NAME)
+FLAGS = -Wall -Wextra -Werror
 SOURCE = cw_asm_main.c cw_asm_file_handle.c cw_asm_init_free.c cw_asm_header.c\
 		cw_asm_token.c cw_asm_token_type.c cw_asm_token_type2.c\
 		cw_asm_label_list.c cw_asm_operation.c cw_asm_oper_queue.c\
@@ -35,9 +37,9 @@ OBJECT = $(SOURCE:.c=.o)
 
 .PHONY : all clean fclean re
 
-all : $(NAME)
+all : $(NAME_EXE)
 
-$(NAME) : $(LIBFT) $(OBJECT)
+$(NAME_EXE) : $(LIBFT) $(OBJECT)
 	@echo "\033[1;3;34m"
 	gcc $(FLAGS) $(OBJECT) -o $@ $(INCLUDES) $(LIB_DIR) $(LIB)
 	@echo "\033[23;32m--[ "$(NAME) ]-- successfully compiled"\033[0m"
@@ -58,6 +60,6 @@ clean :
 
 fclean : clean
 	@make -C $(LIBFT_DIR) fclean
-	@rm -f $(NAME)
+	@rm -f $(NAME_EXE)
 
 re : fclean all
