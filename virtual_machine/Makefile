@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: laleta <marvin@42.fr>                      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/07 19:28:58 by laleta            #+#    #+#              #
-#    Updated: 2020/02/25 19:03:21 by laleta           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 EXE_DIR = ../
 NAME = corewar
 NAME_EXE = $(EXE_DIR)$(NAME)
@@ -26,7 +14,7 @@ HEADER = op.h vm.h cw_visual.h types.h
 
 INCLUDES = -Iinc -I$(LIBFT_DIR)
 
-NCURSES_DIR = /Users/${USER}/.brew/Cellar/ncurses/6.1/
+NCURSES_DIR = /usr/local/Cellar/ncurses/6.2/
 
 LIBFT = $(LIBFT_DIR)libft.a
 LIBFT_DIR = libft/
@@ -37,7 +25,9 @@ LIB_DIR = -L$(LIBFT_DIR)
 
 VPATH = src inc
 
-OBJECT = $(SOURCE:.c=.o)
+OBJ = $(SOURCE:.c=.o)
+OBJ_DIR = obj/
+OBJECT = $(patsubst %.o, $(OBJ_DIR)%.o, $(OBJ))
 
 .PHONY : all clean fclean re install
 
@@ -53,14 +43,14 @@ $(LIBFT) :
 	@make -C $(LIBFT_DIR)
 	@echo "\033[0m"
 
-%.o : %.c $(HEADER)
+$(OBJ_DIR)%.o : %.c $(HEADER)
 	@echo "\033[36;3m\c"
 	gcc $(FLAGS) $(INCLUDES) -c $< -o $@
 	@echo "\033[0m\c"
 
 clean :
 	@make -C $(LIBFT_DIR) clean
-	@rm -f $(OBJECT)
+	@find $(OBJ_DIR) -type f -not -name '.gitkeep' -delete
 
 fclean : clean
 	@make -C $(LIBFT_DIR) fclean
