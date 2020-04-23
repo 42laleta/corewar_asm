@@ -1,5 +1,6 @@
 # 🤖 CoreWar 🤖
 Core War is a programming game in which two or more battle programs (`champions`) fights in memory area of virtual machine. 
+
 At the beginning of a game, each champion is loaded into memory at a random location, after which each program executes one instruction in turn. The goal of the game is to cause the processes of opposing programs to terminate (which happens if they execute an invalid instruction), leaving the victorious program in sole.
 
 ![screenshot](screenshot/cw1.gif)
@@ -66,12 +67,13 @@ The program is tested and run on MacOS (Mojave, HighSierra, Catalina)
 - assembler
 ```
 ./asm -a file.s
+
+example: ./asm -a champions/neo.s
 ```
 - disassembler
 ```
 ./asm -d file.cor
 ```
-example: `./asm -a champions/neo.s`
 
 - virtual machine
 ```
@@ -90,8 +92,9 @@ example: `./asm -a champions/neo.s`
           -w                : Web output mode
           -l                : Hide display live instruction
           -o                : Original behaviour
+
+example: ./corewar -w -n 1 champions/neo.cor -n 2 champions/jumper.cor
 ```
-example: `./corewar -w -n 1 champions/neo.cor -n 2 champions/jumper.cor`
 
 ### 🚻    Authors
 
