@@ -100,7 +100,8 @@ example: ./corewar -w -n 1 champions/neo.cor -n 2 champions/jumper.cor
 
 - asm/disasm and visualization - me
 - virtual machine - [Maksim](https://github.com/Qvasov) and ddarell
-- champion(neo.s) and tests - aagripin
+- champion(neo.s) and tests - [aagripin](https://github.com/zutesh-aagripin)
+
 
 ### ℹ️    Thanks
 
